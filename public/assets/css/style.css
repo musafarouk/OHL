@@ -76,11 +76,88 @@ body {
 }
 
 
+/*Bouncy heart animation*/
+.withLove .heart
+{
+	position:relative;
+	z-index:2;
+	-webkit-animation:a 1.33s ease-in-out infinite;
+	animation:a 1.33s ease-in-out infinite;
+	width:44px;
+	height:44px
+}
+.withLove .heart path
+{
+	fill:#ff005d;
+}
+
+/*Keyframe starts here*/
+@-webkit-keyframes
+{
+	0%
+{
+-webkit-transform:scale(1)
+}
+50%
+{
+	-webkit-transform:scale(.8)
+}
+}
+@-webkit-keyframes a
+{
+	0%,to
+	{
+		-webkit-transform:scale(1)
+	}
+	0%
+	{
+		transform:scale(1)
+	}
+	50%
+	{
+		-webkit-transform:scale(.8);
+		transform:scale(.8)
+	}
+	to
+	{
+		-webkit-transform:scale(1);
+		transform:scale(1)
+	}
+}
+@keyframes a
+{
+0%
+	{
+		-webkit-transform:scale(1);
+		transform:scale(1)
+	}
+50%
+	{
+		-webkit-transform:scale(.8);
+		transform:scale(.8)
+	}
+to
+	{
+		-webkit-transform:scale(1);
+		transform:scale(1)
+	}
+}
+
+#bottom-img
+{
+	transform: rotate(180deg);
+}
+
 /*#particles-js
 {
 	position: absolute !important;
 }*/
 
+
+.foot-note
+{
+	font-size: 10px !important;
+}
 /*Media Queries for smaller phones e.g Nokia or old blackberry phones*/
 @media screen and (min-width: 0px) and (max-width: 299px)
 {
@@ -849,26 +926,26 @@ body {
 
 	.social-buttons div span a img
 	{
-		width: 30px;
+		width: 22px;
 		margin-left: auto;
 		margin-right: auto;
 		padding: 20px;
 		transition: all 0.3s ease-in;
-		filter: grayscale(1);
+		/* filter: grayscale(1); */
 	}
 
 	.social-buttons div span a img:hover
 	{
-		margin-bottom: 5px;
-		filter: grayscale(0);
+		transform: scale(1.05);
+		/* filter: grayscale(0); */
 	}
 	.footer p
 	{
-		padding: 20px;
+		padding: 10px;
 		color: #fff;
 		letter-spacing: 2px;
 		font-family: monospace;
-		font-size: 20px;
+		font-size: 10px;
 	}
 }
 
