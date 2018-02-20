@@ -1,0 +1,2 @@
+Drupal.debounce=function(func,wait,immediate){var timeout=void 0;var result=void 0;return function(){var context=this;var args=arguments;var later=function later(){timeout=null;if(!immediate){result=func.apply(context,args);}};var callNow=immediate&&!timeout;clearTimeout(timeout);timeout=setTimeout(later,wait);if(callNow){result=func.apply(context,args);}
+return result;};};
