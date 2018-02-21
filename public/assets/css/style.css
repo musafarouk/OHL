@@ -44,992 +44,244 @@ body {
 	}
 }
 
-
-.arrow
-{
-	
-	width: 40px;
-	position: absolute;
-	bottom: 0;
-	left: 50%;
-	margin-left:-20px;
-	z-index: 0;
+/*** Mixins & Default Styles ***/
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.bounce
-{
-  -moz-animation: bounce 2s infinite;
-  -webkit-animation: bounce 2s infinite;
-  animation: bounce 2s infinite;
+body {
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
+/*** Color Variables ***/
+/*** Centering Hack ***/
+/*** Header Styles ***/
+header {
+  width: 100vw;
+  height: 100vh;
+  background: url("../img/darkbg.jpg");
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+/*** Navigation Styles ***/
+nav {
+  width: 100vw;
+  height: 80px;
+  background: #46b2f0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: fixed;
+  z-index: 10;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+nav.navShadow {
+  -webkit-box-shadow: 0 4px 30px -5px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 4px 30px -5px rgba(0, 0, 0, 0.2);
+  height: 60px;
+}
+nav.navShadow #word-mark {
+  opacity: 0;
+}
+
+#brand,
+#menu,
+ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+		  align-items: center;
+		  list-style-type: none;
+}
+
+#brand {
+  padding-left: 40px;
+}
+
+#logo
+{
+	font-family: 'Pacifico';
+	font-size: 30px;
+}
+
+/*** Menu Styles ***/
+#menu {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  padding-right: 40px;
+}
+
+li {
+  margin-left: 20px;
+}
+li a {
+	text-decoration: none;
+	color: #FFFFFF;
+	text-transform: uppercase;
+	font-family: Lato;
+  display: block;
+}
+
+#menu-toggle {
+  width: 55px;
+  height: 55px;
+  background: #2ea8ee;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+  display: none;
+}
+#menu-toggle:hover .bar {
+  width: 25px;
+}
+#menu-toggle.closeMenu .bar {
+  width: 25px;
+}
+#menu-toggle.closeMenu .bar:first-child {
+  -webkit-transform: translateY(7px) rotate(45deg);
+          transform: translateY(7px) rotate(45deg);
+}
+#menu-toggle.closeMenu .bar:nth-child(2) {
+  -webkit-transform: scale(0);
+          transform: scale(0);
+}
+#menu-toggle.closeMenu .bar:last-child {
+  -webkit-transform: translateY(-7px) rotate(-45deg);
+          transform: translateY(-7px) rotate(-45deg);
+}
+
+.bar {
+  width: 25px;
+  height: 2px;
+  background: #fff;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+.bar:nth-child(2) {
+  width: 20px;
+  margin: 5px 0;
+}
+.bar:last-child {
+  width: 15px;
+}
+
+/*** Hero Section Styles ***/
+#hero-section {
+  width: 100vw;
+  height: calc(100vh - 160px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 160px;
+  background-image: url("assets/img/darkbg.jpg")
+}
+
+#head-line {
+  position: relative;
+  text-align: center;
+  font-size: 50px;
+  font-family: Lato;
+  color: #FFFFFF;
+}
+
+
+/*** Section Styles ***/
+section {
+  width: 100vw;
+  height: calc(100vh - 100px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+section:nth-child(odd) {
+  background: #fa6c98;
+}
+section:nth-child(even) {
+  background: #79edfc;
+}
+
+#heading {
+  width: 120px;
+  height: 20px;
+  background: #fff;
+  border-radius: 90px;
+  margin-top: 40px;
+}
+
+/*** Responsive Menu For Smaller Device ***/
+@media screen and (max-width: 767px) {
+  #menu-toggle {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
   }
-  40% {
-    transform: translateY(-30px);
+
+  ul {
+    display: inline-block;
+    width: 100vw;
+    height: 0;
+    background: #79edfc;
+    position: absolute;
+    top: 160px;
+    -webkit-transform: translate(, );
+            transform: translate(, );
+    -webkit-box-shadow: 0 5px 30px -4px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 30px -4px rgba(0, 0, 0, 0.2);
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
   }
-  60% {
-    transform: translateY(-15px);
+  ul.showMenu {
+    height: 250px;
+  }
+  ul.showMenu li {
+    height: 80px;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  li {
+    width: 50%;
+    height: 80px;
+    float: left;
+    padding-left: 40px;
+    opacity: 0;
+    visibility: hidden;
+    margin-left: 0;
+    -webkit-transition: all 0.3s 0.1s;
+    transition: all 0.3s 0.1s;
+  }
+  li:first-child, li:nth-child(2) {
+    margin-top: 80px;
+  }
+
+  #head-line {
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
   }
 }
-
-
-/*Bouncy heart animation*/
-.withLove .heart
-{
-	position:relative;
-	z-index:2;
-	-webkit-animation:a 1.33s ease-in-out infinite;
-	animation:a 1.33s ease-in-out infinite;
-	width:44px;
-	height:44px
-}
-.withLove .heart path
-{
-	fill:#ff005d;
-}
-
-/*Keyframe starts here*/
-@-webkit-keyframes
-{
-	0%
-{
--webkit-transform:scale(1)
-}
-50%
-{
-	-webkit-transform:scale(.8)
-}
-}
-@-webkit-keyframes a
-{
-	0%,to
-	{
-		-webkit-transform:scale(1)
-	}
-	0%
-	{
-		transform:scale(1)
-	}
-	50%
-	{
-		-webkit-transform:scale(.8);
-		transform:scale(.8)
-	}
-	to
-	{
-		-webkit-transform:scale(1);
-		transform:scale(1)
-	}
-}
-@keyframes a
-{
-0%
-	{
-		-webkit-transform:scale(1);
-		transform:scale(1)
-	}
-50%
-	{
-		-webkit-transform:scale(.8);
-		transform:scale(.8)
-	}
-to
-	{
-		-webkit-transform:scale(1);
-		transform:scale(1)
-	}
-}
-
-#bottom-img
-{
-	transform: rotate(180deg);
-}
-
-/*#particles-js
-{
-	position: absolute !important;
-}*/
-
-
-.foot-note
-{
-	font-size: 10px !important;
-}
-/*Media Queries for smaller phones e.g Nokia or old blackberry phones*/
-@media screen and (min-width: 0px) and (max-width: 299px)
-{
-	html
-	{
-		display:none;
-	}
-	
-}
-
-/*Media Queries for smart phones and phablets eg iphone 8 & Iphone 8 plus*/
-@media screen and (min-width: 300px) and (max-width: 374px)
-{
-		body
-		{
-			background: url("../img/darkbg.jpg") no-repeat #0a0d0f;
-		}
-		/*Navigation sevtion here*/
-		.nav
-		{
-			width: 100%;
-			padding: 10px;
-			border-bottom: 2px solid #fff;
-	    	z-index: -2;
-	    	position: fixed;
-			/*box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.5);*/
-		}
-		/*Left navigation section here*/
-		.left-nav p
-		{
-			font-family: 'Pacifico';
-			color: #FFFFFF;
-			font-size: 20px;
-		}
-
-
-		.first-page-section
-		{
-			
-	    	
-		}
-
-		/*Introduction section here*/
-		.introduction
-		{
-			height: 800px;
-		}
-		.introduction h1
-		{
-			text-align: center;
-			padding-top: 100px;
-			margin-bottom: 30px;
-			font-family: 'Product Sans';
-			font-size: 50px;
-			color: #FFFFFF;
-			text-decoration: underline;
-		}
-		.introduction p
-		{
-			text-align: center;
-			margin-top: 30px;
-			margin-bottom: 30px;
-			font-family: monospace;
-			font-size: 50px;
-			color: #FFFFFF;
-		}
-
-		/*Portfolio Section here*/
-		.portfolio
-		{
-			background-color: #ffffff;
-			text-align: center;
-		}
-
-		.portfolio h1
-		{
-			padding: 20px;
-			font-size: 50px;
-			font-family: monospace;
-		}
-
-		.portfolio hr
-		{
-			color: black;
-			height: 2px;
-			background-color: black;
-		}
-
-		/*Portfolio grid section here*/
-		article
-		{
-			text-align: center;
-		}
-		article section
-		{
-			text-align: center;
-			display: inline-block;
-			padding: 30px;
-			
-			
-			
-		}
-		article a
-		{
-			color: #000;
-		}
-		article section img
-		{
-			width: 230px;
-			border-radius: 5px;
-			box-shadow: 2px 4px 6px 1px rgba(50, 50, 50, 0.5);
-			transition: all 0.3s ease-in;
-		}
-		article section img:hover
-		{
-			transform: scale(1.05);
-
-		}
-		article section p
-		{
-			font-family: monospace;
-			padding: 5px;
-			font-size: 20px;
-			
-		}
-
-		/*ABOUT SECTION*/
-		.tres
-		{
-		  min-height: 400px;
-		  padding-bottom: 100px;
-		  background: #0a0d0f;
-		}
-		.tres .info
-		{
-		    width: 70%;
-		    margin: 0 auto;
-		    padding-top: 100px;
-		}
-		.tres .info #cancionesRandom
-		{
-		      display: none;
-		      color: yellow;
-		      height: 20px;
-		      max-width: 400px;
-		      font-size: 15px;
-		      letter-spacing: 0.5px;
-		      font-family: monospace;
-		  }
-		.tres h2
-		{
-			text-align: center;
-		    font-family: monospace;
-		    font-weight: 700;
-		    font-size: 50px;
-		    margin: 0;
-		    color: white;
-		    letter-spacing: 2px;
-		    cursor: pointer;
-		}
-		.tres h2::selection
-		{
-		    background: yellow;
-		    color: #111111;
-		}
-		.tres .left
-		{
-		    width: 100%;
-		    height: 100%;
-		    /*padding-right: 30px;*/
-		    padding-bottom: 20px;
-		    box-sizing: border-box;
-		}
-		.tres .left a
-		{
-		    color: white;
-		    text-decoration: none;
-		}
-		.tres .left a::selection
-		{
-		    background: yellow;
-		    color: #111111;
-		}
-		.tres .left a:hover
-		{
-			color: yellow;
-		}
-		.tres .left p
-		{
-			text-align: center;
-		    font-family: monospace;
-		    font-size: 17px;
-			line-height: 1.5;
-			color: #efefef;
-		}
-		.tres .left p::selection
-		{
-		    background: yellow;
-		    color: #111111;
-		}
-		.tres .right
-		{
-		    width: 100%;
-		    height: 100%;
-		    float: right;
-		}
-		.tres .right p
-		{
-			text-decoration: underline;
-			text-align: center;
-		    font-family: monospace;
-		    font-size: 20px;
-		    line-height: 1.5;
-			color: #efefef;
-		}
-		.tres .right p::selection
-		{
-		    background: yellow;
-		    color: #111111;
-		}
-		.tres .right ul li
-		{
-			text-align: center;
-		    color: #efefef;
-		    font-family: monospace;
-		    font-size: 17px;
-		    margin-top: 5px;
-		}
-		.tres .right ul li::selection
-		{
-		    background: yellow;
-		    color: #111111;
-		}
-		/*Footer section*/
-		.footer
-		{
-			right: 0;
-			left: 0;
-			float: center;
-			text-align: center;
-			padding: 10px;
-		}
-
-		.social-buttons div span
-		{
-			display: inline;
-			list-style-type: none;
-		}
-
-		.social-buttons div span a img
-		{
-			width: 20px;
-			margin-left: auto;
-			margin-right: auto;
-			padding: 20px;
-			transition: all 0.3s ease-in;
-		}
-		.footer p
-		{
-			padding: 20px;
-			color: #fff;
-			letter-spacing: 2px;
-			font-family: monospace;
-			font-size: 10px;
-		}
-}
-
-
-/*Media Queries for devices slightly larger than tablets but not laptops or desktops e.g iPad Pro*/
-@media screen and (min-width: 375px) and (max-width: 959px)
-{
-	body
-	{
-		background: url("../img/darkbg.jpg") no-repeat #0a0d0f;
-	}
-	/*Navigation sevtion here*/
-	.nav
-	{
-		width: 100%;
-		padding: 10px;
-		border-bottom: 2px solid #fff;
-    	z-index: -2;
-    	position: fixed;
-		/*box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.5);*/
-	}
-	/*Left navigation section here*/
-	.left-nav p
-	{
-		font-family: 'Pacifico';
-		color: #FFFFFF;
-		font-size: 20px;
-	}
-
-
-	.first-page-section
-	{
-		
-    	
-	}
-
-	/*Introduction section here*/
-	.introduction
-	{
-		height: 800px;
-	}
-	.introduction h1
-	{
-		text-align: center;
-		padding-top: 100px;
-		margin-bottom: 30px;
-		font-family: 'Product Sans';
-		font-size: 90px;
-		color: #FFFFFF;
-		text-decoration: underline;
-	}
-	.introduction p
-	{
-		text-align: center;
-		margin-top: 30px;
-		margin-bottom: 30px;
-		font-family: monospace;
-		font-size: 50px;
-		color: #FFFFFF;
-	}
-
-	/*Portfolio Section here*/
-	.portfolio
-	{
-		background-color: #ffffff;
-		text-align: center;
-	}
-
-	.portfolio h1
-	{
-		padding: 20px;
-		font-size: 50px;
-		font-family: monospace;
-	}
-
-	.portfolio hr
-	{
-		color: black;
-		height: 2px;
-		background-color: black;
-	}
-
-	/*Portfolio grid section here*/
-	article
-	{
-		text-align: center;
-	}
-	article section
-	{
-		display: inline-block;
-		padding: 30px;
-		text-align: center;
-	}
-	article a
-	{
-		color: #000;
-	}
-	article section img
-	{
-		width: 300px;
-		border-radius: 5px;
-		box-shadow: 2px 4px 6px 1px rgba(50, 50, 50, 0.5);
-		transition: all 0.3s ease-in;
-	}
-	article section img:hover
-	{
-		transform: scale(1.05);
-
-	}
-	article section p
-	{
-		font-family: monospace;
-		padding: 5px;
-		font-size: 20px;
-		
-	}
-
-	/*ABOUT SECTION*/
-	.tres
-	{
-	  min-height: 400px;
-	  padding-bottom: 100px;
-	  background: #0a0d0f;
-	}
-	.tres .info
-	{
-	    width: 70%;
-	    margin: 0 auto;
-	    padding-top: 100px;
-	}
-	.tres .info #cancionesRandom
-	{
-	      display: none;
-	      color: yellow;
-	      height: 20px;
-	      max-width: 400px;
-	      font-size: 15px;
-	      letter-spacing: 0.5px;
-	      font-family: monospace;
-	  }
-	.tres h2
-	{
-		text-align: center;
-	    font-family: monospace;
-	    font-weight: 700;
-	    font-size: 50px;
-	    margin: 0;
-	    color: white;
-	    letter-spacing: 2px;
-	    cursor: pointer;
-	}
-	.tres h2::selection
-	{
-	    background: yellow;
-	    color: #111111;
-	}
-	.tres .left
-	{
-	    width: 100%;
-	    height: 100%;
-	    /*padding-right: 30px;*/
-	    padding-bottom: 20px;
-	    box-sizing: border-box;
-	}
-	.tres .left a
-	{
-	    color: white;
-	    text-decoration: none;
-	}
-	.tres .left a::selection
-	{
-	    background: yellow;
-	    color: #111111;
-	}
-	.tres .left a:hover
-	{
-		color: yellow;
-	}
-	.tres .left p
-	{
-	    font-family: monospace;
-	    font-size: 17px;
-		line-height: 1.5;
-		color: #efefef;
-		text-align: center;
-	}
-	.tres .left p::selection
-	{
-	    background: yellow;
-	    color: #111111;
-	}
-	.tres .right
-	{
-	    width: 100%;
-	    height: 100%;
-	    float: right;
-	}
-	.tres .right p
-	{
-		text-decoration: underline;
-		text-align: center;
-	    font-family: monospace;
-	    font-size: 20px;
-	    line-height: 1.5;
-		color: #efefef;
-	}
-	.tres .right p::selection
-	{
-	    background: yellow;
-	    color: #111111;
-	}
-	.tres .right ul li
-	{
-		text-align: center;
-	    color: #efefef;
-	    font-family: monospace;
-	    font-size: 17px;
-	    margin-top: 5px;
-	}
-	.tres .right ul li::selection
-	{
-	    background: yellow;
-	    color: #111111;
-	}
-	/*Footer section*/
-	.footer
-	{
-		right: 0;
-		left: 0;
-		float: center;
-		text-align: center;
-		padding: 10px;
-	}
-
-	.social-buttons div span
-	{
-		display: inline;
-		list-style-type: none;
-	}
-
-	.social-buttons div span a img
-	{
-		width: 20px;
-		margin-left: auto;
-		margin-right: auto;
-		padding: 20px;
-		transition: all 0.3s ease-in;
-	}
-	.footer p
-	{
-		padding: 30px;
-		color: #fff;
-		letter-spacing: 2px;
-		font-family: monospace;
-		font-size: 10px;
-	}
-}
-
-
-/*Media Queries for very large screens Such as laptops*/
-@media screen and (min-width: 960px)
-{
-	body
-	{
-		background: url("../img/darkbg.jpg") no-repeat #0a0d0f;
-	}
-	/*Navigation sevtion here*/
-	.nav
-	{
-		width: 100%;
-		padding: 10px;
-		border-bottom: 2px solid #fff;
-    	z-index: -2;
-    	position: fixed;
-		/*box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.5);*/
-	}
-	/*Left navigation section here*/
-	.left-nav p
-	{
-		font-family: 'Pacifico';
-		color: #FFFFFF;
-		font-size: 20px;
-	}
-
-
-	.first-page-section
-	{
-		
-    	
-	}
-
-	/*Introduction section here*/
-	.introduction
-	{
-		height: 800px;
-	}
-	.introduction h1
-	{
-		text-align: center;
-		padding-top: 200px;
-		margin-bottom: 30px;
-		font-family: 'Product Sans';
-		font-size: 100px;
-		color: #FFFFFF;
-		text-decoration: underline;
-	}
-	.introduction p
-	{
-		text-align: center;
-		margin-top: 30px;
-		margin-bottom: 30px;
-		font-family: monospace;
-		font-size: 50px;
-		color: #FFFFFF;
-	}
-
-	/*Portfolio Section here*/
-	.portfolio
-	{
-		background-color: #ffffff;
-		text-align: center;
-
-	}
-
-	.portfolio h1
-	{
-		padding: 20px;
-		font-size: 50px;
-		font-family: monospace;
-	}
-
-	.portfolio hr
-	{
-		color: black;
-		height: 2px;
-		background-color: black;
-	}
-
-	/*Portfolio grid section here*/
-	article
-	{
-		
-	}
-	article section
-	{
-		display: inline-block;
-		padding: 30px;
-		
-		
-		
-	}
-	article section video
-	{
-		width: 300px;
-		line-height: 
-	}
-	article a
-	{
-		color: #000;
-	}
-	article section img
-	{
-		width: 300px;
-		border-radius: 5px;
-		/* box-shadow: 2px 4px 6px 1px rgba(50, 50, 50, 0.5); */
-		transition: all 0.2s ease-in;
-		filter: grayscale(1);
-	}
-	article section img:hover
-	{
-		/* transform: scale(1.05); */
-		filter: grayscale(0);
-		/* box-shadow: 2px 2px 10px 10px rgba(50, 50, 50, 0.5); */
-		/* box-shadow: 2px 4px 6px 1px rgba(50, 50, 50, 0.5); */
-		box-shadow: 0px 20px 30px 10px rgba(0,0,0,.15);
-
-	}
-	article section p
-	{
-		font-family: monospace;
-		padding: 5px;
-		font-size: 20px;
-		
-	}
-
-	/*ABOUT SECTION*/
-	.tres
-	{
-	  min-height: 400px;
-	  padding-bottom: 100px;
-	  background: #0a0d0f;
-	}
-	.tres .info
-	{
-	    width: 70%;
-	    margin: 0 auto;
-	    padding-top: 100px;
-	}
-	.tres .info #cancionesRandom
-	{
-	      display: none;
-	      color: yellow;
-	      height: 20px;
-	      max-width: 400px;
-	      font-size: 15px;
-	      letter-spacing: 0.5px;
-	      font-family: monospace;
-	  }
-	.tres h2
-	{
-		text-align: center;
-	    font-family: monospace;
-	    font-weight: 700;
-	    font-size: 68px;
-	    margin: 0;
-	    color: white;
-	    letter-spacing: 2px;
-	    cursor: pointer;
-	}
-	.tres h2::selection
-	{
-	    background: yellow;
-	    color: #111111;
-	}
-	.tres .left
-	{
-	    width: 50%;
-	    height: 100%;
-	    float: left;
-	    padding-right: 30px;
-	    box-sizing: border-box;
-	}
-	.tres .left a
-	{
-	    color: white;
-	    text-decoration: none;
-	}
-	.tres .left a::selection
-	{
-	    background: yellow;
-	    color: #111111;
-	}
-	.tres .left a:hover
-	{
-		color: yellow;
-	}
-	.tres .left p
-	{
-	    font-family: monospace;
-	    font-size: 17px;
-		line-height: 1.5;
-		color: #efefef;
-	}
-	.tres .left p::selection
-	{
-	    background: yellow;
-	    color: #111111;
-	}
-	.tres .right
-	{
-	    width: 40%;
-	    height: 100%;
-	    float: right;
-	}
-	.tres .right p
-	{
-	    font-family: monospace;
-	    font-size: 17px;
-	    line-height: 1.5;
-		color: #efefef;
-	}
-	.tres .right p::selection
-	{
-	    background: yellow;
-	    color: #111111;
-	}
-	.tres .right ul li
-	{
-	    color: #efefef;
-	    font-family: monospace;
-	    font-size: 17px;
-	    margin-top: 5px;
-	}
-	.tres .right ul li::selection
-	{
-	    background: yellow;
-	    color: #111111;
-	}
-	/*Footer section*/
-	.footer
-	{
-		right: 0;
-		left: 0;
-		float: center;
-		text-align: center;
-		padding: 10px;
-	}
-
-	.social-buttons div span
-	{
-		display: inline;
-		list-style-type: none;
-	}
-
-	.social-buttons div span a img
-	{
-		width: 22px;
-		margin-left: auto;
-		margin-right: auto;
-		padding: 20px;
-		transition: all 0.3s ease-in;
-		/* filter: grayscale(1); */
-	}
-
-	.social-buttons div span a img:hover
-	{
-		transform: scale(1.2);
-		/* filter: grayscale(0); */
-	}
-	.footer p
-	{
-		padding: 10px;
-		color: #fff;
-		letter-spacing: 2px;
-		font-family: monospace;
-		font-size: 10px;
-	}
-	/* Rectangle 2: */
-background-image: linear-gradient(-135deg, #8BCCF1 0%, #8278F1 100%);
-border: 1px solid #979797;
-
-/* Rectangle 3: */
-background-image: linear-gradient(-90deg, #3023AE 0%, #C86DD7 100%);
-border-radius: 12px;
-}
-
-
-
-
-
-
-
-
-
-
-/*About me section*/
-	/*.about
-	{
-
-	}
-	.about h1
-	{
-		color: #fff;
-		font-family: monospace;
-		font-size: 50px;
-		padding:20px;
-		text-align: center;
-	}
-	.about ul
-	{
-		display: inline-block;
-	}
-	.about ul li
-	{
-
-	}
-	.about-section
-	{
-		display: inline-block;
-	}
-	.left-about
-	{
-		float: left;
-	}
-	.left-about p
-	{
-		width: 50%;
-		color: #fff;
-		line-height: 30px;
-		font-family: monospace;
-	}
-	.right-about
-	{
-		color: #fff;
-	}
-	.right-about ul li
-	{
-		font-size: 10px;
-		line-height: 30px;
-		
-		font-family: monospace;
-	}*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
