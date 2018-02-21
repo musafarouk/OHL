@@ -1,2 +1,2 @@
 # OHL
-## A website for an trading company
+## A website for a trading company
